@@ -2,12 +2,12 @@
 <link rel="manifest" href="manifest.json"><link rel="icon" type="image/svg+xml" href="icon.svg"><link rel="icon" type="image/png" href="icon-192.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="MetraObra"><meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
 :root{--inb:#8b93a3;--inbg:#ffffff;--lab:#2E333E;--bg:#f4f5f7;--bg2:#e7e9ee;--fg:#1d2129;--mut:#586070;--acc:#2E333E;--accf:#F8C623;--yl:#F8C623;--line:#d2d6de;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);overflow-x:clip}
 [data-theme=dark]{--inb:#4d5566;--inbg:#1f232b;--lab:#d7dbe3;--bg:#191c23;--bg2:#252932;--fg:#eceef2;--mut:#a4abb9;--acc:#F8C623;--accf:#23272f;--yl:#F8C623;--line:#343a46}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{font:400 16px/1.5 'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--fg);max-width:1000px;margin:0 auto;min-height:100vh;padding:0 1.2rem 3rem}
 button,input,select{font:inherit;color:inherit}
-header{position:sticky;top:env(safe-area-inset-top,0px);background:#2E333E;color:#f4f5f7;padding:.8rem 0 .7rem;z-index:5;box-shadow:0 0 0 100vmax #2E333E;clip-path:inset(0 -100vmax)}header::after{content:'';position:absolute;left:-100vmax;right:-100vmax;bottom:0;height:3px;background:var(--yl)}header small,header .mut{color:#aab1bf}header .ib{border-color:rgba(255,255,255,.3);color:#f4f5f7}header .pill{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18);color:#f4f5f7;margin:.6rem 0 0}main{padding-top:1rem}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:#2E333E;color:#f4f5f7;padding:.8rem 0 .7rem;z-index:5;box-shadow:0 0 0 100vmax #2E333E;clip-path:inset(0 -100vmax)}header::after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--yl);box-shadow:0 0 0 100vmax var(--yl);clip-path:inset(0 -100vmax)}header small,header .mut{color:#aab1bf}header .ib{border-color:rgba(255,255,255,.3);color:#f4f5f7}header .pill{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18);color:#f4f5f7;margin:.6rem 0 0}main{padding-top:1rem}
 .top{display:flex;justify-content:space-between;align-items:center;gap:.6rem}
 h1{font-size:1.45rem;font-weight:600}h1 small{display:block;font-size:.8rem;font-weight:300}h2{font-size:1.5rem;font-weight:500;margin:.6rem 0}h3{font-size:1.05rem;font-weight:500;margin:1.3rem 0 .4rem}
 .mut,small{color:var(--mut)}
