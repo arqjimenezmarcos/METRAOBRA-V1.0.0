@@ -1,11 +1,11 @@
 <!DOCTYPE html><html lang="es" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#4a5230"><title>MetraObra · Cómputos de obra</title>
 <link rel="manifest" href="manifest.json"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="MetraObra"><meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
-:root{--bg:#f3eedc;--bg2:#e9e2c8;--fg:#232618;--mut:#5a5f3f;--acc:#4a5230;--accf:#f3eedc;--line:#d6cfae;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--inb:#76734d;--inbg:#fffef6;--lab:#33381f;--bg:#f3eedc;--bg2:#e9e2c8;--fg:#232618;--mut:#474c2d;--acc:#4a5230;--accf:#f3eedc;--line:#d6cfae;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
-[data-theme=dark]{--bg:#141710;--bg2:#1e2316;--fg:#ece7d2;--mut:#b4b090;--acc:#a8b574;--accf:#141710;--line:#2d3421}
+[data-theme=dark]{--inb:#5d6842;--inbg:#1e2316;--lab:#d6d1b4;--bg:#141710;--bg2:#1e2316;--fg:#ece7d2;--mut:#b4b090;--acc:#a8b574;--accf:#141710;--line:#2d3421}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font:300 16px/1.5 'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--fg);max-width:1000px;margin:0 auto;min-height:100vh;padding:0 1.2rem 3rem}
+body{font:400 16px/1.5 'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--fg);max-width:1000px;margin:0 auto;min-height:100vh;padding:0 1.2rem 3rem}
 button,input,select{font:inherit;color:inherit}
 header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:.8rem 0 .3rem;z-index:5}
 .top{display:flex;justify-content:space-between;align-items:center;gap:.6rem}
@@ -19,16 +19,18 @@ body.mo #ov{opacity:1;pointer-events:auto}body.mo #dr{transform:none}
 #dr button{display:block;width:100%;text-align:left;background:none;border:0;border-left:3px solid transparent;padding:.9rem 1rem;font-size:1.05rem;cursor:pointer}
 #dr button.on{border-left-color:var(--acc);background:var(--bg2);font-weight:500}
 .brand{display:flex;align-items:center;gap:.6rem;flex:1}.lg{width:34px;height:34px;flex:none}
+#rp{display:none}.cv{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;align-items:end;margin-bottom:.4rem}.cv label{font-size:.88rem;color:var(--mut)}
+@media print{body>*:not(#rp){display:none!important}#rp{display:block;color:#000;background:#fff;font:14px/1.45 Outfit,system-ui,sans-serif}#rp table{width:100%;border-collapse:collapse;margin:.4rem 0}#rp td,#rp th{border-bottom:1px solid #bbb;padding:.3rem .4rem;text-align:left}#rp .r{text-align:right}#rp h1{display:flex;align-items:center;gap:.6rem;font-size:20px}#rp h2{font-size:15px;margin:1rem 0 .2rem}}
 @media(prefers-reduced-motion:reduce){#ov,#dr{transition:none}}
 .chips{display:flex;gap:.5rem;overflow-x:auto;padding:.3rem 0 .8rem;scrollbar-width:none}
 .chips button{flex:none;padding:.5rem 1rem;border:1px solid var(--line);background:none;border-radius:99px;cursor:pointer}
 .chips button.on{background:var(--acc);color:var(--accf);border-color:var(--acc)}
-input,select{width:100%;padding:.75rem 1rem;background:var(--bg2);border:1px solid var(--line);border-radius:10px;margin:.3rem 0 .6rem}
+input,select{width:100%;padding:.75rem 1rem;background:var(--inbg);border:1.5px solid var(--inb);border-radius:10px;margin:.3rem 0 .6rem;font-size:1.05rem;font-weight:500}
 :focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 .card{display:block;width:100%;text-align:left;background:var(--bg2);border:0;border-left:4px solid var(--line);padding:1rem;margin-bottom:.7rem;cursor:pointer}
 .card.on{border-left-color:var(--acc)}.card b{display:block;font-weight:500;font-size:1.05rem}.card small{display:block}
 .btn{display:block;width:100%;padding:.95rem;margin-top:1rem;background:var(--acc);color:var(--accf);border:1px solid var(--acc);cursor:pointer;font-weight:500;border-radius:10px}.btn.ghost{background:none;color:var(--acc)}
-.fs{display:grid;grid-template-columns:1fr 1fr;gap:0 .8rem}@media(min-width:760px){.fs{grid-template-columns:repeat(3,1fr)}}.fs label{font-size:.88rem;color:var(--mut)}
+.fs{display:grid;grid-template-columns:1fr 1fr;gap:0 .8rem}@media(min-width:760px){.fs{grid-template-columns:repeat(3,1fr)}}.fs label{font-size:.9rem;font-weight:500;color:var(--lab)}
 .res{background:var(--bg2);border-left:4px solid var(--acc);padding:.5rem 1rem;margin-top:.6rem}.res div{display:flex;justify-content:space-between;gap:1rem;padding:.35rem 0;border-bottom:1px solid var(--line)}.res div:last-child{border:0}
 .cc{border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;margin-bottom:.8rem}
 .ch{display:flex;justify-content:space-between;gap:.5rem}.ch b{font-weight:500}.ch small{display:block}
@@ -39,9 +41,17 @@ input,select{width:100%;padding:.75rem 1rem;background:var(--bg2);border:1px sol
 .tot{font-size:1.3rem;font-weight:500;border-top:1px solid var(--line);margin-top:.3rem;padding-top:.5rem!important}
 .nm{font-size:1.3rem;font-weight:500}
 #toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:var(--acc);color:var(--accf);padding:.7rem 1.2rem;border-radius:99px;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-top:.6rem}@media(min-width:700px){.grid{grid-template-columns:repeat(5,1fr)}}
+.tile{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:var(--bg2);border:1.5px solid var(--inb);border-radius:14px;cursor:pointer;font-size:.82rem;font-weight:500;padding:.3rem;text-align:center;line-height:1.15}
+.tile svg,.mh svg{width:34px;height:34px;stroke:var(--acc);fill:none;stroke-width:1.6}.mh{display:flex;align-items:center;gap:.6rem}.mh svg{width:30px;height:30px}
+.back{background:none;border:0;color:var(--acc);font-size:1rem;font-weight:600;padding:.4rem 0;cursor:pointer}
+.gp{border:1.5px solid var(--line);border-radius:12px;padding:.2rem .9rem .5rem;margin-top:.8rem;min-width:0}.gp legend{padding:0 .4rem;font-weight:600;color:var(--acc);font-size:.9rem}
+.hero{background:var(--acc);color:var(--accf);border-radius:14px;padding:1rem 1.2rem;margin-top:1rem}.hero small{color:var(--accf);opacity:.9;font-size:.95rem;display:block}.hero b{display:block;font-size:2.7rem;line-height:1.1;font-weight:700}.hero b span{font-size:1.1rem;font-weight:500}
+details.cc{padding:.2rem 1rem}details.cc summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:.6rem;padding:.6rem 0}details.cc summary::-webkit-details-marker{display:none}details.cc summary::after{content:'▾';color:var(--mut);transition:transform .2s}details[open].cc summary::after{transform:rotate(180deg)}
+.acts{display:flex;gap:.6rem;margin-bottom:.4rem}.acts .btn{margin-top:.5rem;padding:.6rem}
 </style></head><body>
 <header><div class="top"><button class="ib" id="mb" aria-label="Abrir menú"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h14"/></svg></button><div class="brand"><svg class="lg" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="var(--acc)"/><path d="M30 20v10M70 20v10M30 25h40" stroke="var(--accf)" stroke-width="3" fill="none"/><rect x="30" y="38" width="40" height="40" fill="var(--accf)"/></svg><h1>MetraObra<small id="st">Cómputos de obra</small></h1></div><button class="ib" id="th" aria-label="Cambiar modo claro u oscuro">◐</button></div><button class="pill" id="pj"></button></header>
-<main id="m"></main><div id="ov"></div><aside id="dr"></aside><div id="toast"></div>
+<main id="m"></main><div id="rp"></div><div id="ov"></div><aside id="dr"></aside><div id="toast"></div>
 <script>
 const $=s=>document.querySelector(s),E=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const get=k=>{try{return localStorage.getItem(k)}catch(e){return null}},set=(k,x)=>{try{localStorage.setItem(k,x)}catch(e){}};
@@ -52,7 +62,9 @@ const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 /* Valores referenciales: ajústalos a tu diseño de mezcla y a tus proveedores. */
 const V=b=>typeof b=='string'?E(b):F(b),SACO=42.5;
 const PIE={'Zapata':'1"','Pedestal':'3/4"','Solado / mampostería de fundación':'1"','Viga de riostra':'3/4"','Losa de fundación':'1"','Columna':'3/4"','Viga aérea':'3/4"','Losa maciza':'3/4"','Losa nervada (espesor equivalente)':'1/2"'}; // tamaño de piedra recomendado en obra
-const MIX={210:[9.73,.52,.53,.186],250:[11.5,.5,.51,.19],280:[12.6,.48,.5,.192],350:[14.6,.45,.48,.196]}; // sacos 42,5 kg, arena m³, piedra m³, agua m³ por m³
+const FSUELTO=1.55,DCEM=1440; // factor de volumen suelto y densidad aparente del cemento (kg/m³)
+const mezcla=(m,pr,ac,saco)=>{const [c,a,g]=pr.split(':').map(Number),S=c+a+g,vs=m*FSUELTO,kg=vs*c/S*DCEM;return{kg,sacos:kg/saco,arena:vs*a/S,grava:vs*g/S,agua:kg*ac}}; // Vseco=V×1.55; cemento=Vseco×C/(C+A+G)×1440; agua=cemento×a/c
+const DREC={'Zapata':'1/2','Pedestal':'5/8','Solado / mampostería de fundación':'3/8','Viga de riostra':'1/2','Losa de fundación':'1/2','Columna':'5/8','Viga aérea':'1/2','Losa maciza':'3/8','Losa nervada (espesor equivalente)':'3/8'}; // diámetro típico de cabilla por elemento (verificar en plano)
 const REB={'3/8':9.5,'1/2':12.7,'5/8':15.9,'3/4':19.1,'1':25.4};
 const EL={'Zapata':'Infraestructura','Pedestal':'Infraestructura','Solado / mampostería de fundación':'Infraestructura','Viga de riostra':'Infraestructura','Losa de fundación':'Infraestructura','Columna':'Estructura','Viga aérea':'Estructura','Losa maciza':'Estructura','Losa nervada (espesor equivalente)':'Estructura'};
 const Q={'Zapata':70,'Pedestal':120,'Solado / mampostería de fundación':0,'Viga de riostra':100,'Losa de fundación':80,'Columna':140,'Viga aérea':120,'Losa maciza':90,'Losa nervada (espesor equivalente)':70}; // kg de acero por m³ de concreto
@@ -60,25 +72,44 @@ const MOR={'1:3':[11.3,1],'1:4':[9,1.05],'1:5':[7.5,1.1]}; // sacos y arena m³ 
 const SUP={'Concreto gris virgen o poroso':.25,'Friso nuevo':.2,'Pared pintada en buen estado':0,'Pared pintada deteriorada':.1};
 const PIN={'Caucho':30,'Aceite':35,'Epóxica':25,'Asfáltica':20}; // m² por galón y por mano
 const els=Object.keys(EL);
+/* COVENIN 1753-2006: 3.3.1 tamaño máximo del agregado, 7.2.4 recubrimiento mínimo (cm) */
+const REC={'Zapata':7.5,'Pedestal':4,'Solado / mampostería de fundación':7.5,'Viga de riostra':7.5,'Losa de fundación':7.5,'Columna':4,'Viga aérea':4,'Losa maciza':2,'Losa nervada (espesor equivalente)':2};
+const PS=[['1/2"',1.27],['3/4"',1.9],['1"',2.54],['1 1/2"',3.81],['2"',5.08]];
+const losa=e=>e.startsWith('Losa')&&e!='Losa de fundación'||e.startsWith('Losa de');
+const pmax=(e,L,A,H,sep)=>{const m=Math.min(L,A,H)*100,c=[m/5,.75*sep];if(losa(e))c.push(H*100/3);const lim=Math.min(...c),ok=PS.filter(p=>p[1]<=lim);return[ok.length?ok[ok.length-1][0]:'menor de 1/2"',lim]};
+const TC={'Lámina de zinc acanalada':.8,'Acerolit / lámina de acero':1,'Teja':0}; // ancho útil en m
+const RN={'Pared de bloque':[10,'m²'],'Friso':[15,'m²'],'Cerámica':[8,'m²'],'Pintura':[40,'m²'],'Impermeabilización':[40,'m²'],'Encofrado de columnas y vigas':[8,'m²'],'Acero de refuerzo (armado)':[150,'kg'],'Excavación manual':[4,'m³'],'Vaciado de concreto':[3,'m³']}; // por cuadrilla de 1 maestro + 1 ayudante
+const BT={'Bloque de concreto (COVENIN 42-82)':[39,19],'Bloque de arcilla hueco':[29,19],'Ladrillo macizo de arcilla':[24,6]}; // largo y alto reales en cm
+/* Encofrado por elemento: c = caras de tabla, a = área de contacto, y = [yugos, longitud de cada uno], p = soportes */
+const col={c:'4 caras',a:(L,A,H)=>2*(L+A)*H,y:(L,A,H,s)=>[Math.ceil(H/s)+1,2*(L+A)+.6],p:()=>2,pn:'Tornapuntas'},
+ vig={c:'fondo y 2 laterales',a:(L,A,H)=>L*(A+2*H),y:(L,A,H,s)=>[Math.ceil(L/s)+1,A+2*H+.6],p:(L,A,H,s,q)=>Math.ceil(L/q)+1,pn:'Puntales (pies derechos)'},
+ ros={c:'2 laterales',a:(L,A,H)=>2*L*H,y:vig.y,p:(L,A,H,s,q)=>2*(Math.ceil(L/q)+1),pn:'Estacas'},
+ zap={c:'4 laterales',a:col.a,y:()=>[0,0],p:()=>4,pn:'Estacas'},
+ fun={c:'bordes',a:col.a,y:()=>[0,0],p:(L,A,H,s,q)=>2*(Math.ceil(L/q)+Math.ceil(A/q)),pn:'Estacas'},
+ los={c:'fondo y bordes',a:(L,A,H)=>L*A+2*(L+A)*H,y:()=>[0,0],p:(L,A,H,s,q)=>(Math.ceil(L/q)+1)*(Math.ceil(A/q)+1),pn:'Puntales (pies derechos)'};
+const ENC={'Zapata':zap,'Pedestal':col,'Solado / mampostería de fundación':zap,'Viga de riostra':ros,'Losa de fundación':fun,'Columna':col,'Viga aérea':vig,'Losa maciza':los,'Losa nervada (espesor equivalente)':los};
 const C=[
-{n:'Concreto',nota:'Dimensiones de una pieza y su cantidad. La piedra recomendada depende del elemento. Criterio general de las normas de concreto: el tamaño máximo no debe pasar de 1/5 de la menor dimensión del elemento, 1/3 del espesor de las losas ni 3/4 de la separación libre entre barras. Confírmalo con COVENIN 1753 y tu ingeniero.',
- f:[['e','Elemento',els,'Columna'],['L','Largo','m',.3],['A','Ancho','m',.3],['H','Alto o espesor','m',3],['n','Cantidad','und',4],['fc','f\'c (kg/cm²)',[210,250,280,350],210],['pi','Piedra picada',['Recomendada','1/2"','3/4"','1"','1 1/2"','2"'],'Recomendada'],['t','Tipo de concreto',['Hecho en obra','Premezclado'],'Hecho en obra'],['w','Desperdicio','%',5]],
- r:v=>{const net=v.L*v.A*v.H*v.n,m=net*(1+v.w/100),t=MIX[v.fc],ob=v.t=='Hecho en obra',rec=PIE[v.e],pz=v.pi=='Recomendada'?rec:v.pi,k=m*t[0],s=`${v.e} f'c ${v.fc}: ${v.L}×${v.A}×${v.H} m × ${v.n}`;
-  const rows=[['Volumen neto',net,'m³'],['Volumen con desperdicio',m,'m³'],['Piedra recomendada para '+v.e.toLowerCase(),rec,'']];
-  if(ob)rows.push([`Cemento (saco de ${F(SACO)} kg)`,k,'sacos'],['Peso del cemento',k*SACO,'kg'],['Arena',m*t[1],'m³'],[`Piedra picada (${pz})`,m*t[2],'m³'],['Agua',m*t[3]*1000,'L']);
-  return{g:EL[v.e],src:s+(ob?`, piedra ${pz}`:''),rows,add:ob?[{d:`Cemento (saco de ${F(SACO)} kg)`,u:'sacos',q:k},{d:'Arena (concreto)',u:'m³',q:m*t[1]},{d:`Piedra picada ${pz} (concreto)`,u:'m³',q:m*t[2]}]:[{d:`Concreto premezclado f'c ${v.fc}`,u:'m³',q:m}]}}},
-{n:'Encofrado',nota:'Área de contacto = perímetro expuesto × altura. Considera los usos de la madera y los clavos.',
- f:[['e','Elemento',els,'Columna'],['L','Largo','m',.3],['A','Ancho','m',.3],['H','Altura','m',3],['n','Cantidad','und',4],['u','Usos de la madera','',3]],
- r:v=>{const ac=2*(v.L+v.A)*v.H*v.n,mad=v.u?ac/v.u:ac,cl=ac*.15;
-  return{g:EL[v.e],src:`Encofrado ${v.e}: ${v.L}×${v.A}×${v.H} m × ${v.n}`,rows:[['Área de contacto',ac,'m²'],['Madera a comprar',mad,'m²'],['Clavos y soportes',cl,'kg']],add:[{d:`Encofrado ${v.e}`,u:'m²',q:ac},{d:'Clavos',u:'kg',q:cl}]}}},
-{n:'Acero',nota:'Por metros lineales de campo o por cuantía típica (kg por m³ de concreto). Incluye traslapes y desperdicio.',
- f:[['m','Método',['Por metros lineales','Por cuantía'],'Por metros lineales'],['d','Diámetro (pulg.)',Object.keys(REB),'1/2'],['Lt','Metros lineales (método 1)','m',100],['e','Elemento (método 2)',els,'Columna'],['V','Volumen de concreto (método 2)','m³',1],['Lb','Largo de la varilla','m',12],['w','Traslapes y desperdicio','%',8]],
- r:v=>{const kgm=REB[v.d]**2/162,pc=v.m=='Por cuantía',kg=pc?v.V*Q[v.e]*(1+v.w/100):kgm*v.Lt*(1+v.w/100),lm=kg/kgm;
-  return{g:pc?EL[v.e]:'Estructura',src:pc?`Acero ø ${v.d}" por cuantía, ${v.e} ${F(v.V)} m³`:`Acero ø ${v.d}": ${F(v.Lt)} m`,rows:[['Peso por metro',kgm,'kg/m'],['Longitud con desperdicio',lm,'m'],['Peso total',kg,'kg'],['Varillas comerciales',v.Lb?Math.ceil(lm/v.Lb):0,'und']],add:[{d:`Acero ø ${v.d}"`,u:'kg',q:kg}]}}},
-{n:'Bloques',nota:'Paredes de bloque con descuento de vanos, juntas de pega y 5% de rotura.',
- f:[['A','Área del muro','m²',30],['V','Vanos (puertas y ventanas)','m²',4],['es','Espesor del bloque (cm)',[10,15,20],15],['bl','Largo real (cm)','',39],['bh','Alto real (cm)','',19],['j','Junta','cm',1],['w','Rotura y corte','%',5]],
- r:v=>{const a=Math.max(v.A-v.V,0),pm=1/(((+v.bl+v.j)/100)*((+v.bh+v.j)/100)),b=Math.ceil(a*pm*(1+v.w/100)),mo=a*(v.es/100)*(1-pm*(v.bl/100)*(v.bh/100))*(1+v.w/100),m=MOR['1:4'];
-  return{g:'Mampostería',src:`Muro de bloque de ${v.es} cm, ${F(a)} m² netos`,rows:[['Área neta',a,'m²'],['Bloques por m²',pm,'und'],['Bloques totales',b,'und'],['Mortero de pega (1:4)',mo,'m³'],['Cemento (saco de 42,5 kg)',mo*m[0],'sacos'],['Arena',mo*m[1],'m³']],add:[{d:`Bloques de ${v.es} cm`,u:'und',q:b},{d:'Cemento (pega, saco de 42,5 kg)',u:'sacos',q:mo*m[0]},{d:'Arena (pega)',u:'m³',q:mo*m[1]}]}}},
+{n:'Concreto',nota:'Dimensiones de una pieza y su cantidad. La piedra se calcula con COVENIN 1753-2006, art. 3.3.1: el tamaño máximo no puede pasar de 1/5 de la menor separación entre lados del encofrado, 1/3 del espesor de las losas ni 3/4 de la separación libre entre barras. El f\'c mínimo en fundaciones es 210 kg/cm². Dosificación por volumen: Vseco = V × 1,55; cemento = Vseco × C/(C+A+G) × 1440 kg/m³; agua = cemento × a/c. Usa a/c entre 0,45 y 0,65 (menor a/c = más resistencia, menos trabajabilidad).',
+ f:[['e','Elemento',els,'Columna'],['L','Largo','m',.3],['A','Ancho','m',.3],['H','Alto o espesor','m',3],['n','Cantidad','und',4],['sb','Separación libre entre barras','cm',5],['fc','f\'c (kg/cm²)',[210,250,280,350],210],['pr','Proporción C:A:G',['1:1.5:3','1:2:3','1:2:4','1:3:5'],'1:2:3'],['ac','Relación agua/cemento (a/c)','',0.5],['sk','Saco de cemento (kg)',[50,42.5],50],['pi','Piedra picada',['Recomendada','1/2"','3/4"','1"','1 1/2"','2"'],'Recomendada'],['t','Tipo de concreto',['Hecho en obra','Premezclado'],'Hecho en obra'],['w','Desperdicio','%',5]],
+ r:v=>{const net=v.L*v.A*v.H*v.n,m=net*(1+v.w/100),t=mezcla(m,v.pr,v.ac,parseFloat(v.sk)),sk=parseFloat(v.sk),ob=v.t=='Hecho en obra',[rec,lim]=pmax(v.e,v.L,v.A,v.H,v.sb),pz=v.pi=='Recomendada'?rec:v.pi,k=t.sacos,s=`${v.e} f'c ${v.fc} (${v.pr}, a/c ${v.ac}): ${v.L}×${v.A}×${v.H} m × ${v.n}`;
+  const rows=[['Volumen neto',net,'m³'],['Volumen con desperdicio',m,'m³'],['Tamaño máximo permitido (3.3.1)',F(lim)+' cm','' ],['Piedra recomendada',rec,''],['Recubrimiento mínimo (7.2.4)',F(REC[v.e])+' cm','']];
+  if(ob)rows.push([`Cemento (saco de ${F(sk)} kg)`,k,'sacos'],['Peso del cemento',t.kg,'kg'],['Arena',t.arena,'m³'],[`Piedra picada (${pz})`,t.grava,'m³'],['Agua',t.agua,'L']);
+  return{ti:`${v.e} · ${F(net)} m³`,g:EL[v.e],src:s+(ob?`, piedra ${pz}`:''),rows,add:ob?[{d:`Cemento (saco de ${F(sk)} kg)`,u:'sacos',q:k},{d:'Arena (concreto)',u:'m³',q:t.arena},{d:`Piedra picada ${pz} (concreto)`,u:'m³',q:t.grava}]:[{d:`Concreto premezclado f'c ${v.fc}`,u:'m³',q:m}]}}},
+{n:'Encofrado',nota:'Madera por piezas: tablas, listones de yugos y soportes. Columna: largo y ancho son la sección y alto la altura. Viga: largo, ancho (base) y alto (peralte). Losa: largo y ancho en planta y alto el espesor. Los usos reducen tablas y yugos; los soportes se cuentan completos. Valores de práctica de obra. Según COVENIN 1753-2006 (6.3), los laterales de vigas y columnas pueden retirarse tras 12 h de curado acumulado si no soportan otras cargas.',
+ f:[['e','Elemento',els,'Columna'],['L','Largo','m',.3],['A','Ancho','m',.3],['H','Alto o espesor','m',3],['n','Cantidad','und',4],['te','Espesor de la tabla',['3/4"','1"','1 1/2"'],'1"'],['ta','Ancho de la tabla',['6"','8"','10"'],'8"'],['Ll','Largo de la pieza','m',3],['sy','Separación de yugos','m',.5],['sp','Separación de soportes','m',1],['u','Usos de la madera','',3],['w','Desperdicio','%',5]],
+ r:v=>{const z=ENC[v.e],n=v.n,k=1+v.w/100,u=v.u||1,Ll=v.Ll,ac=z.a(v.L,v.A,v.H)*n,[ny,ly]=z.y(v.L,v.A,v.H,v.sy||.5),Y=ny*n,sop=z.p(v.L,v.A,v.H,v.sy||.5,v.sp||1)*n,wt=parseFloat(v.ta)*.0254,
+  tab=Ll&&wt?Math.ceil(ac/u*k/(wt*Ll)):0,lis=Ll?Math.ceil(Y*ly/u*k/Ll):0,c1=ac*.12,c2=(Y+sop)*.05,tn=`Tablas de ${v.te}×${v.ta}×${F(Ll)} m`,ln=`Listones de 2"×4"×${F(Ll)} m`;
+  return{g:EL[v.e],src:`Encofrado ${v.e}: ${v.L}×${v.A}×${v.H} m × ${n}`,rows:[['Caras de tabla',z.c,''],['Área de contacto',ac,'m²'],[tn,tab,'piezas'],...(Y?[['Yugos',Y,'und'],[ln+' (yugos)',lis,'piezas']]:[]),[z.pn,sop,'piezas'],['Clavos de 2 1/2" (tablas)',c1,'kg'],['Clavos de 3" (yugos y soportes)',c2,'kg']],
+   add:[{d:tn,u:'piezas',q:tab},...(Y?[{d:ln,u:'piezas',q:lis}]:[]),{d:z.pn,u:'piezas',q:sop},{d:'Clavos de 2 1/2"',u:'kg',q:c1},{d:'Clavos de 3"',u:'kg',q:c2}]}}},
+{n:'Acero',nota:'Por metros lineales de campo o por cuantía típica (kg por m³ de concreto). Incluye traslapes y desperdicio. COVENIN 1753-2006 (7.2.2 y 12): gancho estándar de 180° más 4db (mín. 7 cm) o de 90° más 12db; empalme Clase B = 1,3 Ld (mín. 30 cm). Con «Recomendada» se usa el diámetro típico del elemento; confirma diámetro y cantidad en el plano estructural.',
+ f:[['m','Método',['Por metros lineales','Por cuantía'],'Por metros lineales'],['d','Diámetro de cabilla (pulg.)',['Recomendada',...Object.keys(REB)],'Recomendada'],['Lt','Metros lineales (método 1)','m',100],['e','Elemento (método 2)',els,'Columna'],['V','Volumen de concreto (método 2)','m³',1],['Lb','Largo de la varilla','m',12],['w','Traslapes y desperdicio','%',8]],
+ r:v=>{const pc=v.m=='Por cuantía',dd=v.d=='Recomendada'?(pc?DREC[v.e]:'1/2'):v.d,kgm=REB[dd]**2/162,kg=pc?v.V*Q[v.e]*(1+v.w/100):kgm*v.Lt*(1+v.w/100),lm=kg/kgm;
+  const nv=v.Lb?Math.ceil(lm/v.Lb):0,cn=`Cabilla ø ${dd}" de ${F(v.Lb)} m`;
+  return{ti:`Acero ø ${dd}" · ${F(kg)} kg`,g:pc?EL[v.e]:'Estructura',src:pc?`Acero ø ${dd}" por cuantía, ${v.e} ${F(v.V)} m³`:`Acero ø ${dd}": ${F(v.Lt)} m`,rows:[['Cabilla a usar',`ø ${dd}" (${REB[dd]} mm)`,''],['Peso por metro',kgm,'kg/m'],['Longitud con desperdicio',lm,'m'],['Peso total',kg,'kg'],[`Cabillas ø ${dd}" de ${F(v.Lb)} m`,nv,'und']],add:v.Lb?[{d:cn,u:'und',q:nv}]:[{d:`Acero ø ${dd}"`,u:'kg',q:kg}]}}},
+{n:'Bloques',nota:'Bloque de concreto con las medidas reales de COVENIN 42-82 (39×19 cm). Arcilla y ladrillo son medidas referenciales: cámbialas con el largo y alto de tu proveedor. Descuenta vanos y juntas.',
+ f:[['t','Tipo de bloque',Object.keys(BT),'Bloque de concreto (COVENIN 42-82)'],['A','Área del muro','m²',30],['V','Vanos (puertas y ventanas)','m²',4],['es','Espesor (cm)',[10,15,20],15],['bl','Largo real (cm, 0 = el del tipo)','',0],['bh','Alto real (cm, 0 = el del tipo)','',0],['j','Junta','cm',1],['w','Rotura y corte','%',5]],
+ r:v=>{const d=BT[v.t],bl=v.bl||d[0],bh=v.bh||d[1],a=Math.max(v.A-v.V,0),pm=1/(((bl+v.j)/100)*((bh+v.j)/100)),b=Math.ceil(a*pm*(1+v.w/100)),mo=a*(v.es/100)*(1-pm*(bl/100)*(bh/100))*(1+v.w/100),m=MOR['1:4'],nb=`${v.t.split(' (')[0]} de ${v.es} cm`;
+  return{g:'Mampostería',src:`${nb}, ${F(a)} m² netos`,rows:[['Área neta',a,'m²'],['Piezas por m²',pm,'und'],['Piezas totales',b,'und'],['Mortero de pega (1:4)',mo,'m³'],['Cemento (saco de 42,5 kg)',mo*m[0],'sacos'],['Arena',mo*m[1],'m³']],add:[{d:nb,u:'und',q:b},{d:'Cemento (pega, saco de 42,5 kg)',u:'sacos',q:mo*m[0]},{d:'Arena (pega)',u:'m³',q:mo*m[1]}]}}},
 {n:'Friso',nota:'Pañete interno o externo y morteros de nivelación. Suma 10–15% por rebote.',
  f:[['t','Aplicación',['Friso interno','Friso externo','Mortero de nivelación de piso'],'Friso interno'],['A','Área','m²',50],['e','Espesor','cm',2],['p','Mortero cemento:arena',Object.keys(MOR),'1:4'],['w','Rebote y mermas','%',12]],
  r:v=>{const m=v.A*v.e/100*(1+v.w/100),t=MOR[v.p];
@@ -90,23 +121,48 @@ const C=[
 {n:'Pintura',nota:'Según superficie y tipo de pintura. Las superficies porosas piden sellador o más pintura en la primera mano.',
  f:[['z','Destino',['Paredes','Techos y cielorrasos'],'Paredes'],['A','Área','m²',80],['s','Superficie',Object.keys(SUP),'Friso nuevo'],['t','Tipo de pintura',Object.keys(PIN),'Caucho'],['m','Manos','',2],['r','Rendimiento (0 = el del tipo)','m²/gal',0],['w','Salpicaduras y residuos','%',5]],
  r:v=>{const r=v.r||PIN[v.t],g=(v.A*v.m/r+v.A/r*SUP[v.s])*(1+v.w/100);
-  return{g:'Pintura',src:`${v.t} en ${v.z.toLowerCase()}: ${F(v.A)} m², ${v.m} manos, ${v.s.toLowerCase()}`,rows:[['Rendimiento usado',r,'m²/gal'],['Pintura necesaria',g,'gal'],['Equivale a',g*3.785,'L']],add:[{d:`Pintura ${v.t.toLowerCase()} (${v.z.toLowerCase()})`,u:'gal',q:g}]}}}
+  return{g:'Pintura',src:`${v.t} en ${v.z.toLowerCase()}: ${F(v.A)} m², ${v.m} manos, ${v.s.toLowerCase()}`,rows:[['Rendimiento usado',r,'m²/gal'],['Pintura necesaria',g,'gal'],['Equivale a',g*3.785,'L']],add:[{d:`Pintura ${v.t.toLowerCase()} (${v.z.toLowerCase()})`,u:'gal',q:g}]}}},
+{n:'Cerámica',nota:'Cerámica o porcelanato: piezas, cajas, pego y boquilla. Desperdicio: 5% en patrón recto, 10% en diagonal.',
+ f:[['A','Área a revestir','m²',20],['bl','Largo de la baldosa','cm',60],['ba','Ancho de la baldosa','cm',60],['j','Junta','mm',3],['e','Espesor de la baldosa','mm',8],['pt','Patrón',['Recto (5%)','Diagonal (10%)'],'Recto (5%)'],['mc','Área por caja','m²',1.44],['rp','Rendimiento del pego','kg/m²',5]],
+ r:v=>{const w=v.pt[0]=='R'?1.05:1.1,j=v.j/10,pz=v.A/((v.bl+j)*(v.ba+j)/1e4)*w,m2=v.A*w,cj=v.mc?Math.ceil(m2/v.mc):0,pg=v.A*v.rp,bq=v.A*((v.bl+v.ba)*10/(v.bl*v.ba*100))*v.j*v.e*1.6;
+  return{g:'Revestimientos',src:`Cerámica ${v.bl}×${v.ba} cm, junta ${v.j} mm, ${F(v.A)} m²`,rows:[['Área con desperdicio',m2,'m²'],['Piezas',Math.ceil(pz),'und'],['Cajas',cj,'cajas'],['Pego (bolsas de 25 kg)',Math.ceil(pg/25),'bolsas'],['Pego total',pg,'kg'],['Boquilla (fragua)',bq,'kg']],add:[{d:`Cerámica ${v.bl}×${v.ba} cm`,u:'cajas',q:cj},{d:'Pego para cerámica (bolsa de 25 kg)',u:'bolsas',q:Math.ceil(pg/25)},{d:'Boquilla (fragua)',u:'kg',q:bq}]}}},
+{n:'Techo',nota:'Láminas o tejas para techo inclinado, con solapes. Ancho útil y largo de lámina son referenciales: cámbialos según tu proveedor.',
+ f:[['t','Cubierta',Object.keys(TC),'Lámina de zinc acanalada'],['L','Largo del alero','m',8],['W','Ancho en planta','m',5],['pd','Pendiente','%',30],['ag','Aguas',[1,2],2],['ll','Largo de la lámina','m',3.66],['au','Ancho útil (0 = el del tipo)','m',0],['sl','Solape longitudinal','m',.2],['pm','Piezas por m² (teja)','und',16],['w','Desperdicio','%',5]],
+ r:v=>{const run=v.W/v.ag,sp=run*Math.sqrt(1+(v.pd/100)**2),ar=v.L*sp*v.ag,k=1+v.w/100,te=v.t=='Teja';
+  if(te){const q=Math.ceil(ar*v.pm*k);return{g:'Techos',src:`Teja, ${F(ar)} m² de techo`,rows:[['Longitud del faldón',sp,'m'],['Área de techo',ar,'m²'],['Tejas',q,'und']],add:[{d:'Tejas',u:'und',q}]}}
+  const au=v.au||TC[v.t],fi=Math.ceil(v.L/au),pf=Math.ceil((sp-v.sl)/Math.max(v.ll-v.sl,.1)),q=Math.ceil(fi*pf*v.ag*k);
+  return{g:'Techos',src:`${v.t}, ${F(ar)} m² de techo`,rows:[['Longitud del faldón',sp,'m'],['Área de techo',ar,'m²'],['Filas por faldón',fi,'und'],['Láminas por fila',pf,'und'],['Láminas totales',q,'und']],add:[{d:`${v.t} de ${F(v.ll)} m`,u:'und',q}]}}},
+{n:'Cuadrilla',nota:'Días de trabajo de una cuadrilla tipo (1 maestro + 1 ayudante). Rendimientos referenciales de obra: ajústalos a tu experiencia.',
+ f:[['a','Actividad',Object.keys(RN),'Pared de bloque'],['q','Cantidad','',30],['c','Cuadrillas','',1],['r','Rendimiento por día (0 = el de la actividad)','',0]],
+ r:v=>{const x=RN[v.a],r=v.r||x[0],d=Math.ceil(v.q/(r*(v.c||1))*10)/10;
+  return{g:'Mano de obra',src:`${v.a}: ${F(v.q)} ${x[1]}, ${v.c} cuadrilla(s)`,rows:[['Rendimiento usado',r,x[1]+'/día'],['Días de trabajo',d,'días'],['Jornales (2 personas)',d*2*(v.c||1),'jornales']],add:[{d:`Cuadrilla · ${v.a}`,u:'días',q:d*(v.c||1)}]}}}
 ];
-let P=[],A=get('mo_a')||'',cur=0,view='p';try{P=JSON.parse(get('mo_p')||'[]')}catch(e){}
+let P=[],A=get('mo_a')||'',cur=-1,PRE=null,lastV={},view='p';try{P=JSON.parse(get('mo_p')||'[]')}catch(e){}
 const save=()=>{set('mo_p',JSON.stringify(P));set('mo_a',A)};
 const proj=()=>P.find(p=>p.id==A);
 const sub=c=>c.add.reduce((s,a)=>s+a.q*(a.p||0),0),tot=p=>p.calcs.reduce((s,c)=>s+sub(c),0);
 const toast=t=>{const e=$('#toast');e.textContent=t;e.style.opacity=1;setTimeout(()=>e.style.opacity=0,1700)};
 const conf=(b,fn)=>{const t=b.textContent;b.onclick=()=>{if(b.dataset.s){fn();return}b.dataset.s=1;b.textContent='Toca otra vez para confirmar';setTimeout(()=>{delete b.dataset.s;b.textContent=t},3000)}};
+const ICO={'Concreto':'<path d="M5 9h12l-1.5 8h-9z"/><path d="M17 11l3-2M9 17v3M14 17v3M7 20h9"/>','Encofrado':'<rect x="4" y="5" width="16" height="4"/><rect x="4" y="11" width="16" height="4"/><path d="M7 5v14M17 5v14"/>','Acero':'<path d="M3 8h18M3 12h18M3 16h18"/><path d="M7 6l2 4M12 6l2 4M17 6l2 4M7 14l2 4M12 14l2 4M17 14l2 4"/>','Bloques':'<rect x="3" y="7" width="18" height="10"/><rect x="6" y="10" width="4" height="4"/><rect x="14" y="10" width="4" height="4"/>','Friso':'<path d="M4 15l9-6 7 3-3 4z"/><path d="M13 9l2-4M4 15v4"/>','Impermeabilización':'<path d="M12 4c3 4 5 6.5 5 9.5a5 5 0 0 1-10 0C7 10.5 9 8 12 4z"/>','Pintura':'<rect x="4" y="4" width="14" height="5" rx="1"/><path d="M18 6.5h2v5h-8v3"/><rect x="10" y="14.5" width="4" height="6"/>','Cerámica':'<rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/>','Techo':'<path d="M3 12l9-7 9 7M6 11v8h12v-8"/>','Cuadrilla':'<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19c0-3.5 3-5.5 6-5.5s6 2 6 5.5M15 14c3 0 6 1.5 6 5"/>'};
+const ico=n=>`<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICO[n]||ICO.Bloques}</svg>`;
+const HL=[/^Cemento \(saco/,/^Cabillas/,/^Láminas totales/,/^Tejas/,/^Tablas/,/^Piezas totales/,/^Rollos/,/^Pintura necesaria/,/^Cajas/,/^Días de trabajo/,/^Mortero/,/^Volumen con/];
+const hero=rows=>{for(const re of HL){const r=rows.find(x=>re.test(String(x[0])));if(r)return r}return rows[0]};
+const ENT=['sacos','und','bolsas','cajas','piezas','rollos'];
+const DIMK={'Concreto':['e','L','A','H','n'],'Encofrado':['e','L','A','H','n'],'Acero':['m','e','Lt','V'],'Bloques':['A','V'],'Friso':['A','e'],'Impermeabilización':['A'],'Pintura':['z','A'],'Cerámica':['A','bl','ba'],'Techo':['L','W','pd','ag'],'Cuadrilla':['a','q','c']};
+const heroHtml=h=>`<div class="hero"><small>${E(h[0])}</small><b>${V(h[1])} <span>${h[2]}</span></b>${ENT.includes(h[2])&&h[1]%1>.001?`<small>Comprar: ${Math.ceil(h[1])} ${h[2]}</small>`:''}</div>`;
+const norm=a=>{const d=a.d;if(/^Cemento/.test(d)){const m=d.match(/saco de ([\d.,]+) kg/);return m?`Cemento (saco de ${m[1]} kg)`:d}if(/^Arena/.test(d))return'Arena';return d.replace(/ \(concreto\)$/,'')};
+const lista=p=>{const m={};p.calcs.forEach(c=>c.add.forEach(a=>{const d=norm(a),k=d+'|'+a.u;m[k]=m[k]||{d,u:a.u,q:0};m[k].q+=a.q}));return Object.values(m).sort((x,y)=>x.d.localeCompare(y.d))};
+const fq=a=>ENT.includes(a.u)?Math.ceil(a.q-1e-9).toLocaleString('es-VE'):F(a.q);
+const listaTxt=(p,wa)=>(wa?`*Materiales · ${p.name}*`:`Materiales · ${p.name}`)+'\n'+lista(p).map(a=>`• ${a.d}: ${fq(a)} ${a.u}`).join('\n');
 function go(v){view=v;render()}
 function render(){
-  const p=proj();$('#pj').innerHTML=p?`Proyecto: <b>${E(p.name)}</b>`:'Sin proyecto activo · toca para crear uno';$('#pj').onclick=()=>go('p');
-  const S=[['p','Proyectos'],['c','Calcular'],['h','Historial']];
+  const p=proj();$('#pj').innerHTML=p?`Proyecto: <b>${E(p.name)}</b>`:view=='p'?'Ingresa el nombre del proyecto':'Sin proyecto activo · toca para crear uno';$('#pj').onclick=()=>view=='p'?($('#pn')&&$('#pn').focus()):go('p');
+  const S=[['p','Proyectos'],['c','Calcular'],['h','Historial'],['u','Conversor']];
   $('#dr').innerHTML='<small class="mut" style="display:block;padding:.4rem 1rem 1rem">Menú</small>'+S.map(([k,n])=>`<button data-v="${k}" class="${k==view?'on':''}">${n}</button>`).join('');
-  document.querySelectorAll('#dr button').forEach(b=>b.onclick=()=>{document.body.classList.remove('mo');go(b.dataset.v)});
+  document.querySelectorAll('#dr button').forEach(b=>b.onclick=()=>{document.body.classList.remove('mo');if(b.dataset.v=='c')cur=-1;go(b.dataset.v)});
   $('#mb').onclick=()=>document.body.classList.add('mo');$('#ov').onclick=()=>document.body.classList.remove('mo');
   $('#st').textContent=S.find(s=>s[0]==view)[1];
-  view=='p'?projects():view=='c'?calc():hist();scrollTo(0,0);
+  view=='p'?projects():view=='c'?calc():view=='u'?conv():hist();scrollTo(0,0);
 }
 function newProj(name){const p={id:uid(),name:name||'Mi proyecto',t:Date.now(),calcs:[]};P.unshift(p);A=p.id;save();return p}
 function projects(){
@@ -115,27 +171,46 @@ function projects(){
   document.querySelectorAll('.card').forEach(b=>b.onclick=()=>{A=b.dataset.id;save();go('h')});
 }
 function calc(){
-  const c=C[cur];
-  $('#m').innerHTML=`<div class="chips">${C.map((x,i)=>`<button class="${i==cur?'on':''}" data-i="${i}">${x.n}</button>`).join('')}</div><h2>${c.n}</h2><p class="mut">${c.nota}</p><div class="fs" style="margin-top:.8rem">${c.f.map(([k,l,u,d])=>Array.isArray(u)?`<label>${l}<select id="f_${k}">${u.map(o=>`<option${o==d?' selected':''}>${E(o)}</option>`).join('')}</select></label>`:`<label>${l}${u?` (${u})`:''}<input id="f_${k}" inputmode="decimal" value="${d}"></label>`).join('')}</div><div class="res" id="rs"></div><button class="btn" id="ad">Guardar en el proyecto</button>`;
-  document.querySelectorAll('.chips button').forEach(b=>b.onclick=()=>{cur=+b.dataset.i;calc();scrollTo(0,0)});
-  const run=()=>{const v={};c.f.forEach(([k])=>{const e=$('#f_'+k);v[k]=e.tagName=='SELECT'?e.value:(+String(e.value).replace(',','.')||0)});const r=c.r(v);$('#rs').innerHTML=r.rows.map(([a,b,u])=>`<div><span>${a}</span><b>${V(b)} ${u}</b></div>`).join('');return r};
+  if(cur<0){$('#m').innerHTML=`<h2>¿Qué vas a calcular?</h2><div class="grid">${C.map((x,i)=>`<button class="tile" data-i="${i}">${ico(x.n)}<span>${x.n}</span></button>`).join('')}</div>`;
+    document.querySelectorAll('.tile').forEach(b=>b.onclick=()=>{cur=+b.dataset.i;calc();scrollTo(0,0)});return}
+  const c=C[cur],pv=PRE,DK=DIMK[c.n]||[];PRE=null;
+  const fld=([k,l,u,d])=>{if(pv&&pv[k]!==undefined)d=pv[k];return Array.isArray(u)?`<label>${l}<select id="f_${k}">${u.map(o=>`<option${o==d?' selected':''}>${E(o)}</option>`).join('')}</select></label>`:`<label>${l}${u?` (${u})`:''}<input id="f_${k}" inputmode="decimal" value="${d}"></label>`};
+  const gp=(t,a)=>a.length?`<fieldset class="gp"><legend>${t}</legend><div class="fs">${a.map(fld).join('')}</div></fieldset>`:'';
+  $('#m').innerHTML=`<button class="back" id="bk">‹ Categorías</button><h2 class="mh">${ico(c.n)}${c.n}</h2><p class="mut">${c.nota}</p>${gp('Dimensiones',c.f.filter(f=>DK.includes(f[0])))}${gp('Especificaciones',c.f.filter(f=>!DK.includes(f[0])))}<div id="rs"></div><button class="btn" id="ad">Guardar en el proyecto</button>`;
+  $('#bk').onclick=()=>{cur=-1;calc();scrollTo(0,0)};
+  const run=()=>{const v={};c.f.forEach(([k])=>{const e=$('#f_'+k);v[k]=e.tagName=='SELECT'?e.value:(+String(e.value).replace(',','.')||0)});const r=c.r(v);lastV=v;const h=hero(r.rows);$('#rs').innerHTML=heroHtml(h)+'<div class="res">'+r.rows.filter(x=>x!==h).map(([a,b,u])=>`<div><span>${a}</span><b>${V(b)} ${u}</b></div>`).join('')+'</div>';return r};
   document.querySelectorAll('.fs input,.fs select').forEach(e=>e.oninput=run);run();
-  $('#ad').onclick=()=>{const r=run();let p=proj()||newProj('');p.calcs.unshift({id:uid(),t:Date.now(),mod:c.n,src:r.src,g:r.g,rows:r.rows,add:r.add.map(a=>({...a,p:0}))});save();render();toast('Guardado en '+p.name)};
+  $('#ad').onclick=()=>{const r=run();let p=proj()||newProj('');p.calcs.unshift({id:uid(),t:Date.now(),mod:c.n,ti:r.ti,mi:cur,v:lastV,src:r.src,g:r.g,rows:r.rows,add:r.add.map(a=>({...a,p:0}))});save();render();toast('Guardado en '+p.name)};
 }
 function sumHtml(p){
   const g={};p.calcs.forEach(c=>g[c.g]=(g[c.g]||0)+sub(c));
   return Object.keys(g).map(k=>`<div><span>${k}</span><b>${F(g[k])}</b></div>`).join('')+`<div class="tot"><span>Total</span><b>${F(tot(p))}</b></div>`;
 }
+const CV=[['Pulgadas','Centímetros',2.54],['Pies','Metros',.3048],['Yardas','Metros',.9144],['Galones','Litros',3.785411784],['m³','pies³',35.3146667],['m²','pies²',10.7639104],['Kilogramos','Libras',2.20462262],['Toneladas','Kilogramos',1000],['kgf/cm²','psi',14.2233433]];
+function conv(){
+  $('#m').innerHTML='<h2>Conversor</h2><p class="mut">Escribe en cualquiera de los dos campos y el otro se actualiza.</p>'+CV.map(([a,b],i)=>`<div class="cv"><label>${a}<input data-i="${i}" data-s="a" inputmode="decimal"></label><label>${b}<input data-i="${i}" data-s="b" inputmode="decimal"></label></div>`).join('');
+  document.querySelectorAll('.cv input').forEach(e=>e.oninput=()=>{const i=+e.dataset.i,f=CV[i][2],a=e.dataset.s=='a',o=document.querySelector(`.cv input[data-i="${i}"][data-s="${a?'b':'a'}"]`),x=+String(e.value).replace(',','.');o.value=e.value===''||isNaN(x)?'':+(a?x*f:x/f).toPrecision(6)});
+}
+const resumen=(p,wa)=>{const b=s=>wa?`*${s}*`:s;return b(p.name)+'\n'+p.calcs.slice().reverse().map(c=>`\n${b(c.mod+' · '+c.src)}\n`+c.add.map(a=>`• ${a.d}: ${F(a.q)} ${a.u}${a.p?` x ${F(a.p)} = ${F(a.q*a.p)}`:''}`).join('\n')).join('\n')+`\n\n${b('Total: '+F(tot(p)))}`};
+const reporte=p=>`<h1><svg width="34" height="34" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#4a5230"/><path d="M30 20v10M70 20v10M30 25h40" stroke="#f3eedc" stroke-width="3" fill="none"/><rect x="30" y="38" width="40" height="40" fill="#f3eedc"/></svg>MetraObra · ${E(p.name)}</h1><p>${D(Date.now())}</p>`+p.calcs.slice().reverse().map(c=>`<h2>${c.mod} · ${E(c.src)}</h2><table>`+c.add.map(a=>`<tr><td>${E(a.d)}</td><td class="r">${F(a.q)} ${a.u}</td><td class="r">${a.p?F(a.p):''}</td><td class="r">${a.p?F(a.q*a.p):''}</td></tr>`).join('')+'</table>').join('')+`<h2>Total: ${F(tot(p))}</h2><p>Cantidades referenciales; verifícalas con tu ingeniero. Criterios de concreto según COVENIN 1753-2006.</p>`;
 function hist(){
   const p=proj();
   if(!p){$('#m').innerHTML='<h2>Historial</h2><p class="mut">Elige o crea un proyecto para ver sus cálculos.</p><button class="btn" id="go">Ir a proyectos</button>';$('#go').onclick=()=>go('p');return}
-  $('#m').innerHTML=`<input class="nm" id="rn" value="${E(p.name)}" aria-label="Nombre del proyecto"><small>Creado ${D(p.t)} · ${p.calcs.length} cálculos</small><h3>Costo por categoría</h3><div class="sum" id="sm">${sumHtml(p)}</div><h3>Historial de cálculos</h3>`+
-  (p.calcs.length?p.calcs.map(c=>`<div class="cc"><div class="ch"><div><b>${c.mod} · ${E(c.g)}</b><small>${E(c.src)}</small><small>${D(c.t)}</small></div><button class="x" data-d="${c.id}" aria-label="Quitar cálculo">×</button></div><div class="mini">${c.rows.map(([a,b,u])=>`<div style="display:flex;justify-content:space-between"><span>${a}</span><span>${V(b)} ${u}</span></div>`).join('')}</div>${c.add.map((a,i)=>`<div class="it"><div><b style="font-weight:500">${E(a.d)}</b><small>${F(a.q)} ${a.u}</small></div><input inputmode="decimal" placeholder="Precio unit." data-c="${c.id}" data-a="${i}" value="${a.p||''}"></div>`).join('')}</div>`).join(''):'<p class="mut">Sin cálculos todavía. Ve a «Calcular» y guarda el primero.</p>')+
-  `<button class="btn" id="cp">Copiar resumen</button><button class="btn ghost" id="dp">Eliminar proyecto</button>`;
+  const cc=c=>{const h=hero(c.rows);return`<details class="cc" data-q="${E((c.mod+' '+c.g+' '+c.src+' '+(c.ti||'')+' '+c.add.map(a=>a.d).join(' ')).toLowerCase())}"><summary><div><b>${E(c.ti||c.mod+' · '+c.g)}</b><small>${E(c.mod)} · ${V(h[1])} ${h[2]} ${E(h[0])}</small></div></summary><small>${E(c.src)} · ${D(c.t)}</small><div class="mini">${c.rows.map(([a,b,u])=>`<div style="display:flex;justify-content:space-between;gap:1rem"><span>${a}</span><span>${V(b)} ${u}</span></div>`).join('')}</div>${c.add.map((a,i)=>`<div class="it"><div><b style="font-weight:500">${E(a.d)}</b><small>${F(a.q)} ${a.u}</small></div><input inputmode="decimal" placeholder="Precio unit." data-c="${c.id}" data-a="${i}" value="${a.p||''}"></div>`).join('')}<div class="acts"><button class="btn ghost" data-dup="${c.id}">Duplicar</button><button class="btn ghost" data-d="${c.id}">Quitar</button></div></details>`};
+  $('#m').innerHTML=`<input class="nm" id="rn" value="${E(p.name)}" aria-label="Nombre del proyecto"><small>Creado ${D(p.t)} · ${p.calcs.length} cálculos</small><h3>Costo por categoría</h3><div class="sum" id="sm">${sumHtml(p)}</div>`+
+  (p.calcs.length?`<button class="btn" id="ls">Generar lista de materiales</button><div id="lb" hidden></div>`:'')+`<h3>Historial de cálculos</h3>`+
+  (p.calcs.length?`<input type="search" id="qs" placeholder="Buscar: losa nervada, acero, cemento…" aria-label="Buscar en el historial">`+p.calcs.map(cc).join('')+'<p class="mut" id="nq" hidden>Sin resultados.</p>':'<p class="mut">Sin cálculos todavía. Ve a «Calcular» y guarda el primero.</p>')+
+  `<button class="btn" id="wa">Compartir por WhatsApp</button><button class="btn ghost" id="pdf">Exportar a PDF</button><button class="btn ghost" id="cp">Copiar resumen</button><button class="btn ghost" id="dp">Eliminar proyecto</button>`;
   $('#rn').oninput=e=>{p.name=e.target.value||'Sin nombre';save();$('#pj').innerHTML=`Proyecto: <b>${E(p.name)}</b>`};
   document.querySelectorAll('.it input').forEach(e=>e.oninput=()=>{p.calcs.find(c=>c.id==e.dataset.c).add[+e.dataset.a].p=+String(e.value).replace(',','.')||0;save();$('#sm').innerHTML=sumHtml(p)});
-  document.querySelectorAll('.x').forEach(b=>b.onclick=()=>{p.calcs=p.calcs.filter(c=>c.id!=b.dataset.d);save();render()});
-  $('#cp').onclick=()=>{const t=`${p.name}\n`+p.calcs.slice().reverse().map(c=>`\n${c.mod} · ${c.src}\n`+c.add.map(a=>`  ${a.d}: ${F(a.q)} ${a.u}${a.p?` x ${F(a.p)} = ${F(a.q*a.p)}`:''}`).join('\n')).join('\n')+`\n\nTotal: ${F(tot(p))}`;try{navigator.clipboard.writeText(t).then(()=>toast('Resumen copiado'),()=>toast('No se pudo copiar'))}catch(e){toast('No se pudo copiar')}};
+  document.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{p.calcs=p.calcs.filter(c=>c.id!=b.dataset.d);save();render()});
+  document.querySelectorAll('[data-dup]').forEach(b=>b.onclick=()=>{const c=p.calcs.find(x=>x.id==b.dataset.dup);if(c.v&&c.mi!=null){PRE=c.v;cur=c.mi;go('c');toast('Edita los valores y guarda')}else{p.calcs.unshift({...JSON.parse(JSON.stringify(c)),id:uid(),t:Date.now()});save();render();toast('Cálculo duplicado')}});
+  if($('#qs'))$('#qs').oninput=e=>{const q=e.target.value.trim().toLowerCase();let n=0;document.querySelectorAll('details.cc').forEach(d=>{const ok=d.dataset.q.includes(q);d.hidden=!ok;if(ok)n++});$('#nq').hidden=n>0};
+  if($('#ls'))$('#ls').onclick=()=>{const b=$('#lb');if(!b.hidden){b.hidden=true;return}b.innerHTML='<div class="res">'+lista(p).map(a=>`<div><span>${E(a.d)}</span><b>${fq(a)} ${a.u}</b></div>`).join('')+'</div><div class="acts"><button class="btn ghost" id="lc">Copiar lista</button><button class="btn ghost" id="lw">WhatsApp</button></div>';b.hidden=false;
+    $('#lc').onclick=()=>{try{navigator.clipboard.writeText(listaTxt(p)).then(()=>toast('Lista copiada'),()=>toast('No se pudo copiar'))}catch(e){toast('No se pudo copiar')}};$('#lw').onclick=()=>window.open('https://wa.me/?text='+encodeURIComponent(listaTxt(p,1)),'_blank')};
+  $('#wa').onclick=()=>window.open('https://wa.me/?text='+encodeURIComponent(resumen(p,1)),'_blank');
+  $('#pdf').onclick=()=>{$('#rp').innerHTML=reporte(p);window.print()};
+  $('#cp').onclick=()=>{try{navigator.clipboard.writeText(resumen(p)).then(()=>toast('Resumen copiado'),()=>toast('No se pudo copiar'))}catch(e){toast('No se pudo copiar')}};
   conf($('#dp'),()=>{P=P.filter(x=>x.id!=p.id);A=P[0]?P[0].id:'';save();go('p')});
 }
 render();
