@@ -5,7 +5,7 @@
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 [data-theme=dark]{--bg:#141710;--bg2:#1e2316;--fg:#ece7d2;--mut:#b4b090;--acc:#a8b574;--accf:#141710;--line:#2d3421}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font:300 16px/1.5 'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--fg);max-width:560px;margin:0 auto;min-height:100vh;padding:0 1rem 6rem}
+body{font:300 16px/1.5 'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--fg);max-width:1000px;margin:0 auto;min-height:100vh;padding:0 1.2rem 3rem}
 button,input,select{font:inherit;color:inherit}
 header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:.8rem 0 .3rem;z-index:5}
 .top{display:flex;justify-content:space-between;align-items:center;gap:.6rem}
@@ -13,17 +13,22 @@ h1{font-size:1.45rem;font-weight:600}h1 small{display:block;font-size:.8rem;font
 .mut,small{color:var(--mut)}
 .ib{background:none;border:1px solid var(--line);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.1rem;flex:none}
 .pill{display:block;width:100%;text-align:left;margin:.5rem 0;padding:.5rem .9rem;background:var(--bg2);border:1px solid var(--line);border-radius:10px;cursor:pointer}
-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:560px;display:flex;background:var(--bg2);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
-nav button{flex:1;background:none;border:0;padding:1rem .3rem;cursor:pointer;color:var(--mut)}nav button.on{color:var(--acc);font-weight:600;box-shadow:inset 0 3px var(--acc)}
+#ov{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:opacity .25s;z-index:9}
+#dr{position:fixed;top:0;bottom:0;left:0;width:min(280px,82vw);background:var(--bg);border-right:1px solid var(--line);transform:translateX(-100%);transition:transform .25s;z-index:10;padding:calc(1rem + env(safe-area-inset-top,0px)) 1rem 1rem}
+body.mo #ov{opacity:1;pointer-events:auto}body.mo #dr{transform:none}
+#dr button{display:block;width:100%;text-align:left;background:none;border:0;border-left:3px solid transparent;padding:.9rem 1rem;font-size:1.05rem;cursor:pointer}
+#dr button.on{border-left-color:var(--acc);background:var(--bg2);font-weight:500}
+.brand{display:flex;align-items:center;gap:.6rem;flex:1}.lg{width:34px;height:34px;flex:none}
+@media(prefers-reduced-motion:reduce){#ov,#dr{transition:none}}
 .chips{display:flex;gap:.5rem;overflow-x:auto;padding:.3rem 0 .8rem;scrollbar-width:none}
 .chips button{flex:none;padding:.5rem 1rem;border:1px solid var(--line);background:none;border-radius:99px;cursor:pointer}
 .chips button.on{background:var(--acc);color:var(--accf);border-color:var(--acc)}
 input,select{width:100%;padding:.75rem 1rem;background:var(--bg2);border:1px solid var(--line);border-radius:10px;margin:.3rem 0 .6rem}
-:focus-visible{outline:2px solid var(--acc);outline-offset:1.5px}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 .card{display:block;width:100%;text-align:left;background:var(--bg2);border:0;border-left:4px solid var(--line);padding:1rem;margin-bottom:.7rem;cursor:pointer}
 .card.on{border-left-color:var(--acc)}.card b{display:block;font-weight:500;font-size:1.05rem}.card small{display:block}
 .btn{display:block;width:100%;padding:.95rem;margin-top:1rem;background:var(--acc);color:var(--accf);border:1px solid var(--acc);cursor:pointer;font-weight:500;border-radius:10px}.btn.ghost{background:none;color:var(--acc)}
-.fs{display:grid;grid-template-columns:1fr 1fr;gap:0 .8rem}.fs label{font-size:.88rem;color:var(--mut)}
+.fs{display:grid;grid-template-columns:1fr 1fr;gap:0 .8rem}@media(min-width:760px){.fs{grid-template-columns:repeat(3,1fr)}}.fs label{font-size:.88rem;color:var(--mut)}
 .res{background:var(--bg2);border-left:4px solid var(--acc);padding:.5rem 1rem;margin-top:.6rem}.res div{display:flex;justify-content:space-between;gap:1rem;padding:.35rem 0;border-bottom:1px solid var(--line)}.res div:last-child{border:0}
 .cc{border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;margin-bottom:.8rem}
 .ch{display:flex;justify-content:space-between;gap:.5rem}.ch b{font-weight:500}.ch small{display:block}
@@ -33,10 +38,10 @@ input,select{width:100%;padding:.75rem 1rem;background:var(--bg2);border:1px sol
 .sum{background:var(--bg2);border-left:4px solid var(--acc);padding:.6rem 1rem;margin:.6rem 0}.sum div{display:flex;justify-content:space-between;padding:.25rem 0}
 .tot{font-size:1.3rem;font-weight:500;border-top:1px solid var(--line);margin-top:.3rem;padding-top:.5rem!important}
 .nm{font-size:1.3rem;font-weight:500}
-#toast{position:fixed;bottom:5rem;left:50%;transform:translateX(-50%);background:var(--acc);color:var(--accf);padding:.7rem 1.2rem;border-radius:99px;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
+#toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:var(--acc);color:var(--accf);padding:.7rem 1.2rem;border-radius:99px;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
 </style></head><body>
-<header><div class="top"><h1>MetraObra<small>Cómputos de obra</small></h1><button class="ib" id="th" aria-label="Cambiar modo claro u oscuro">◐</button></div><button class="pill" id="pj"></button></header>
-<main id="m"></main><nav id="nv"></nav><div id="toast"></div>
+<header><div class="top"><button class="ib" id="mb" aria-label="Abrir menú"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h14"/></svg></button><div class="brand"><svg class="lg" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="var(--acc)"/><path d="M30 20v10M70 20v10M30 25h40" stroke="var(--accf)" stroke-width="3" fill="none"/><rect x="30" y="38" width="40" height="40" fill="var(--accf)"/></svg><h1>MetraObra<small id="st">Cómputos de obra</small></h1></div><button class="ib" id="th" aria-label="Cambiar modo claro u oscuro">◐</button></div><button class="pill" id="pj"></button></header>
+<main id="m"></main><div id="ov"></div><aside id="dr"></aside><div id="toast"></div>
 <script>
 const $=s=>document.querySelector(s),E=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const get=k=>{try{return localStorage.getItem(k)}catch(e){return null}},set=(k,x)=>{try{localStorage.setItem(k,x)}catch(e){}};
@@ -45,7 +50,9 @@ const theme=()=>{document.documentElement.dataset.theme=dk?'dark':'light';set('m
 const F=x=>(+x||0).toLocaleString('es-VE',{maximumFractionDigits:2}),D=t=>new Date(t).toLocaleString('es-VE',{dateStyle:'short',timeStyle:'short'});
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 /* Valores referenciales: ajústalos a tu diseño de mezcla y a tus proveedores. */
-const MIX={140:[7.01,.56,.55,.184],175:[8.43,.54,.55,.185],210:[9.73,.52,.53,.186],250:[11.5,.5,.51,.19]}; // sacos 42,5 kg, arena m³, piedra m³, agua m³ por m³
+const V=b=>typeof b=='string'?E(b):F(b),SACO=42.5;
+const PIE={'Zapata':'1"','Pedestal':'3/4"','Solado / mampostería de fundación':'1"','Viga de riostra':'3/4"','Losa de fundación':'1"','Columna':'3/4"','Viga aérea':'3/4"','Losa maciza':'3/4"','Losa nervada (espesor equivalente)':'1/2"'}; // tamaño de piedra recomendado en obra
+const MIX={210:[9.73,.52,.53,.186],250:[11.5,.5,.51,.19],280:[12.6,.48,.5,.192],350:[14.6,.45,.48,.196]}; // sacos 42,5 kg, arena m³, piedra m³, agua m³ por m³
 const REB={'3/8':9.5,'1/2':12.7,'5/8':15.9,'3/4':19.1,'1':25.4};
 const EL={'Zapata':'Infraestructura','Pedestal':'Infraestructura','Solado / mampostería de fundación':'Infraestructura','Viga de riostra':'Infraestructura','Losa de fundación':'Infraestructura','Columna':'Estructura','Viga aérea':'Estructura','Losa maciza':'Estructura','Losa nervada (espesor equivalente)':'Estructura'};
 const Q={'Zapata':70,'Pedestal':120,'Solado / mampostería de fundación':0,'Viga de riostra':100,'Losa de fundación':80,'Columna':140,'Viga aérea':120,'Losa maciza':90,'Losa nervada (espesor equivalente)':70}; // kg de acero por m³ de concreto
@@ -54,12 +61,12 @@ const SUP={'Concreto gris virgen o poroso':.25,'Friso nuevo':.2,'Pared pintada e
 const PIN={'Caucho':30,'Aceite':35,'Epóxica':25,'Asfáltica':20}; // m² por galón y por mano
 const els=Object.keys(EL);
 const C=[
-{n:'Concreto',nota:'Zapatas, columnas, vigas y losas: dimensiones de una pieza y su cantidad. Suma el desperdicio en sitio.',
- f:[['e','Elemento',els,'Columna'],['L','Largo','m',.3],['A','Ancho','m',.3],['H','Alto o espesor','m',3],['n','Cantidad','und',4],['fc','f\'c (kg/cm²)',[140,175,210,250],210],['t','Tipo de concreto',['Hecho en obra','Premezclado'],'Hecho en obra'],['w','Desperdicio','%',5]],
- r:v=>{const net=v.L*v.A*v.H*v.n,m=net*(1+v.w/100),t=MIX[v.fc],ob=v.t=='Hecho en obra',s=`${v.e} f'c ${v.fc}: ${v.L}×${v.A}×${v.H} m × ${v.n}`;
-  const rows=[['Volumen neto',net,'m³'],['Volumen con desperdicio',m,'m³']];
-  if(ob)rows.push(['Cemento',m*t[0],'sacos'],['Arena',m*t[1],'m³'],['Piedra',m*t[2],'m³'],['Agua',m*t[3]*1000,'L']);
-  return{g:EL[v.e],src:s,rows,add:ob?[{d:'Cemento (concreto)',u:'sacos',q:m*t[0]},{d:'Arena (concreto)',u:'m³',q:m*t[1]},{d:'Piedra (concreto)',u:'m³',q:m*t[2]}]:[{d:`Concreto premezclado f'c ${v.fc}`,u:'m³',q:m}]}}},
+{n:'Concreto',nota:'Dimensiones de una pieza y su cantidad. La piedra recomendada depende del elemento. Criterio general de las normas de concreto: el tamaño máximo no debe pasar de 1/5 de la menor dimensión del elemento, 1/3 del espesor de las losas ni 3/4 de la separación libre entre barras. Confírmalo con COVENIN 1753 y tu ingeniero.',
+ f:[['e','Elemento',els,'Columna'],['L','Largo','m',.3],['A','Ancho','m',.3],['H','Alto o espesor','m',3],['n','Cantidad','und',4],['fc','f\'c (kg/cm²)',[210,250,280,350],210],['pi','Piedra picada',['Recomendada','1/2"','3/4"','1"','1 1/2"','2"'],'Recomendada'],['t','Tipo de concreto',['Hecho en obra','Premezclado'],'Hecho en obra'],['w','Desperdicio','%',5]],
+ r:v=>{const net=v.L*v.A*v.H*v.n,m=net*(1+v.w/100),t=MIX[v.fc],ob=v.t=='Hecho en obra',rec=PIE[v.e],pz=v.pi=='Recomendada'?rec:v.pi,k=m*t[0],s=`${v.e} f'c ${v.fc}: ${v.L}×${v.A}×${v.H} m × ${v.n}`;
+  const rows=[['Volumen neto',net,'m³'],['Volumen con desperdicio',m,'m³'],['Piedra recomendada para '+v.e.toLowerCase(),rec,'']];
+  if(ob)rows.push([`Cemento (saco de ${F(SACO)} kg)`,k,'sacos'],['Peso del cemento',k*SACO,'kg'],['Arena',m*t[1],'m³'],[`Piedra picada (${pz})`,m*t[2],'m³'],['Agua',m*t[3]*1000,'L']);
+  return{g:EL[v.e],src:s+(ob?`, piedra ${pz}`:''),rows,add:ob?[{d:`Cemento (saco de ${F(SACO)} kg)`,u:'sacos',q:k},{d:'Arena (concreto)',u:'m³',q:m*t[1]},{d:`Piedra picada ${pz} (concreto)`,u:'m³',q:m*t[2]}]:[{d:`Concreto premezclado f'c ${v.fc}`,u:'m³',q:m}]}}},
 {n:'Encofrado',nota:'Área de contacto = perímetro expuesto × altura. Considera los usos de la madera y los clavos.',
  f:[['e','Elemento',els,'Columna'],['L','Largo','m',.3],['A','Ancho','m',.3],['H','Altura','m',3],['n','Cantidad','und',4],['u','Usos de la madera','',3]],
  r:v=>{const ac=2*(v.L+v.A)*v.H*v.n,mad=v.u?ac/v.u:ac,cl=ac*.15;
@@ -71,11 +78,11 @@ const C=[
 {n:'Bloques',nota:'Paredes de bloque con descuento de vanos, juntas de pega y 5% de rotura.',
  f:[['A','Área del muro','m²',30],['V','Vanos (puertas y ventanas)','m²',4],['es','Espesor del bloque (cm)',[10,15,20],15],['bl','Largo real (cm)','',39],['bh','Alto real (cm)','',19],['j','Junta','cm',1],['w','Rotura y corte','%',5]],
  r:v=>{const a=Math.max(v.A-v.V,0),pm=1/(((+v.bl+v.j)/100)*((+v.bh+v.j)/100)),b=Math.ceil(a*pm*(1+v.w/100)),mo=a*(v.es/100)*(1-pm*(v.bl/100)*(v.bh/100))*(1+v.w/100),m=MOR['1:4'];
-  return{g:'Mampostería',src:`Muro de bloque de ${v.es} cm, ${F(a)} m² netos`,rows:[['Área neta',a,'m²'],['Bloques por m²',pm,'und'],['Bloques totales',b,'und'],['Mortero de pega (1:4)',mo,'m³'],['Cemento',mo*m[0],'sacos'],['Arena',mo*m[1],'m³']],add:[{d:`Bloques de ${v.es} cm`,u:'und',q:b},{d:'Cemento (pega)',u:'sacos',q:mo*m[0]},{d:'Arena (pega)',u:'m³',q:mo*m[1]}]}}},
+  return{g:'Mampostería',src:`Muro de bloque de ${v.es} cm, ${F(a)} m² netos`,rows:[['Área neta',a,'m²'],['Bloques por m²',pm,'und'],['Bloques totales',b,'und'],['Mortero de pega (1:4)',mo,'m³'],['Cemento (saco de 42,5 kg)',mo*m[0],'sacos'],['Arena',mo*m[1],'m³']],add:[{d:`Bloques de ${v.es} cm`,u:'und',q:b},{d:'Cemento (pega, saco de 42,5 kg)',u:'sacos',q:mo*m[0]},{d:'Arena (pega)',u:'m³',q:mo*m[1]}]}}},
 {n:'Friso',nota:'Pañete interno o externo y morteros de nivelación. Suma 10–15% por rebote.',
  f:[['t','Aplicación',['Friso interno','Friso externo','Mortero de nivelación de piso'],'Friso interno'],['A','Área','m²',50],['e','Espesor','cm',2],['p','Mortero cemento:arena',Object.keys(MOR),'1:4'],['w','Rebote y mermas','%',12]],
  r:v=>{const m=v.A*v.e/100*(1+v.w/100),t=MOR[v.p];
-  return{g:'Revestimientos',src:`${v.t} ${v.p}: ${F(v.A)} m² × ${v.e} cm`,rows:[['Mortero',m,'m³'],['Cemento',m*t[0],'sacos'],['Arena',m*t[1],'m³']],add:[{d:`Cemento (${v.t.toLowerCase()})`,u:'sacos',q:m*t[0]},{d:`Arena (${v.t.toLowerCase()})`,u:'m³',q:m*t[1]}]}}},
+  return{g:'Revestimientos',src:`${v.t} ${v.p}: ${F(v.A)} m² × ${v.e} cm`,rows:[['Mortero',m,'m³'],['Cemento (saco de 42,5 kg)',m*t[0],'sacos'],['Arena',m*t[1],'m³']],add:[{d:`Cemento (${v.t.toLowerCase()}, saco de 42,5 kg)`,u:'sacos',q:m*t[0]},{d:`Arena (${v.t.toLowerCase()})`,u:'m³',q:m*t[1]}]}}},
 {n:'Impermeabilización',nota:'Manto asfáltico con solapes de 10–12% e imprimación asfáltica (primer).',
  f:[['A','Área (techo, losa o terraza)','m²',60],['s','Solapes','%',11],['ro','Área por rollo','m²',10],['r','Rendimiento del primer','m²/L',5]],
  r:v=>{const a=v.A*(1+v.s/100),l=v.r?v.A/v.r:0;
@@ -94,8 +101,11 @@ const conf=(b,fn)=>{const t=b.textContent;b.onclick=()=>{if(b.dataset.s){fn();re
 function go(v){view=v;render()}
 function render(){
   const p=proj();$('#pj').innerHTML=p?`Proyecto: <b>${E(p.name)}</b>`:'Sin proyecto activo · toca para crear uno';$('#pj').onclick=()=>go('p');
-  $('#nv').innerHTML=[['p','Proyectos'],['c','Calcular'],['h','Historial']].map(([k,n])=>`<button data-v="${k}" class="${k==view?'on':''}">${n}</button>`).join('');
-  document.querySelectorAll('#nv button').forEach(b=>b.onclick=()=>go(b.dataset.v));
+  const S=[['p','Proyectos'],['c','Calcular'],['h','Historial']];
+  $('#dr').innerHTML='<small class="mut" style="display:block;padding:.4rem 1rem 1rem">Menú</small>'+S.map(([k,n])=>`<button data-v="${k}" class="${k==view?'on':''}">${n}</button>`).join('');
+  document.querySelectorAll('#dr button').forEach(b=>b.onclick=()=>{document.body.classList.remove('mo');go(b.dataset.v)});
+  $('#mb').onclick=()=>document.body.classList.add('mo');$('#ov').onclick=()=>document.body.classList.remove('mo');
+  $('#st').textContent=S.find(s=>s[0]==view)[1];
   view=='p'?projects():view=='c'?calc():hist();scrollTo(0,0);
 }
 function newProj(name){const p={id:uid(),name:name||'Mi proyecto',t:Date.now(),calcs:[]};P.unshift(p);A=p.id;save();return p}
@@ -108,7 +118,7 @@ function calc(){
   const c=C[cur];
   $('#m').innerHTML=`<div class="chips">${C.map((x,i)=>`<button class="${i==cur?'on':''}" data-i="${i}">${x.n}</button>`).join('')}</div><h2>${c.n}</h2><p class="mut">${c.nota}</p><div class="fs" style="margin-top:.8rem">${c.f.map(([k,l,u,d])=>Array.isArray(u)?`<label>${l}<select id="f_${k}">${u.map(o=>`<option${o==d?' selected':''}>${E(o)}</option>`).join('')}</select></label>`:`<label>${l}${u?` (${u})`:''}<input id="f_${k}" inputmode="decimal" value="${d}"></label>`).join('')}</div><div class="res" id="rs"></div><button class="btn" id="ad">Guardar en el proyecto</button>`;
   document.querySelectorAll('.chips button').forEach(b=>b.onclick=()=>{cur=+b.dataset.i;calc();scrollTo(0,0)});
-  const run=()=>{const v={};c.f.forEach(([k])=>{const e=$('#f_'+k);v[k]=e.tagName=='SELECT'?e.value:(+String(e.value).replace(',','.')||0)});const r=c.r(v);$('#rs').innerHTML=r.rows.map(([a,b,u])=>`<div><span>${a}</span><b>${F(b)} ${u}</b></div>`).join('');return r};
+  const run=()=>{const v={};c.f.forEach(([k])=>{const e=$('#f_'+k);v[k]=e.tagName=='SELECT'?e.value:(+String(e.value).replace(',','.')||0)});const r=c.r(v);$('#rs').innerHTML=r.rows.map(([a,b,u])=>`<div><span>${a}</span><b>${V(b)} ${u}</b></div>`).join('');return r};
   document.querySelectorAll('.fs input,.fs select').forEach(e=>e.oninput=run);run();
   $('#ad').onclick=()=>{const r=run();let p=proj()||newProj('');p.calcs.unshift({id:uid(),t:Date.now(),mod:c.n,src:r.src,g:r.g,rows:r.rows,add:r.add.map(a=>({...a,p:0}))});save();render();toast('Guardado en '+p.name)};
 }
@@ -120,7 +130,7 @@ function hist(){
   const p=proj();
   if(!p){$('#m').innerHTML='<h2>Historial</h2><p class="mut">Elige o crea un proyecto para ver sus cálculos.</p><button class="btn" id="go">Ir a proyectos</button>';$('#go').onclick=()=>go('p');return}
   $('#m').innerHTML=`<input class="nm" id="rn" value="${E(p.name)}" aria-label="Nombre del proyecto"><small>Creado ${D(p.t)} · ${p.calcs.length} cálculos</small><h3>Costo por categoría</h3><div class="sum" id="sm">${sumHtml(p)}</div><h3>Historial de cálculos</h3>`+
-  (p.calcs.length?p.calcs.map(c=>`<div class="cc"><div class="ch"><div><b>${c.mod} · ${E(c.g)}</b><small>${E(c.src)}</small><small>${D(c.t)}</small></div><button class="x" data-d="${c.id}" aria-label="Quitar cálculo">×</button></div><div class="mini">${c.rows.map(([a,b,u])=>`<div style="display:flex;justify-content:space-between"><span>${a}</span><span>${F(b)} ${u}</span></div>`).join('')}</div>${c.add.map((a,i)=>`<div class="it"><div><b style="font-weight:500">${E(a.d)}</b><small>${F(a.q)} ${a.u}</small></div><input inputmode="decimal" placeholder="Precio unit." data-c="${c.id}" data-a="${i}" value="${a.p||''}"></div>`).join('')}</div>`).join(''):'<p class="mut">Sin cálculos todavía. Ve a «Calcular» y guarda el primero.</p>')+
+  (p.calcs.length?p.calcs.map(c=>`<div class="cc"><div class="ch"><div><b>${c.mod} · ${E(c.g)}</b><small>${E(c.src)}</small><small>${D(c.t)}</small></div><button class="x" data-d="${c.id}" aria-label="Quitar cálculo">×</button></div><div class="mini">${c.rows.map(([a,b,u])=>`<div style="display:flex;justify-content:space-between"><span>${a}</span><span>${V(b)} ${u}</span></div>`).join('')}</div>${c.add.map((a,i)=>`<div class="it"><div><b style="font-weight:500">${E(a.d)}</b><small>${F(a.q)} ${a.u}</small></div><input inputmode="decimal" placeholder="Precio unit." data-c="${c.id}" data-a="${i}" value="${a.p||''}"></div>`).join('')}</div>`).join(''):'<p class="mut">Sin cálculos todavía. Ve a «Calcular» y guarda el primero.</p>')+
   `<button class="btn" id="cp">Copiar resumen</button><button class="btn ghost" id="dp">Eliminar proyecto</button>`;
   $('#rn').oninput=e=>{p.name=e.target.value||'Sin nombre';save();$('#pj').innerHTML=`Proyecto: <b>${E(p.name)}</b>`};
   document.querySelectorAll('.it input').forEach(e=>e.oninput=()=>{p.calcs.find(c=>c.id==e.dataset.c).add[+e.dataset.a].p=+String(e.value).replace(',','.')||0;save();$('#sm').innerHTML=sumHtml(p)});
